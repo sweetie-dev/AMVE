@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AMVE</title>
+        <link rel="icon" href="img/AMve.png" type="image/png">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header style="text-align:center">
+            <img src="img/amveTech.png" alt="Logo AMVE" style="height:60px; vertical-align:middle;">
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="carrinho.html">Carrinho (<span id="cart-count">0
+        </span>)</a>
+                <a href="cadastro.html">Cadastro</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="produtos">
+                <h1>Nossos Produtos</h1>
+                <div id="produtos-grid" class="produtos-grid">
+                </div>
+            </section>
+        </main>
+
+        <script>
+            const produtos = [
+                { id: 1, nome: 'Laptop AMVE', preco: 2500.00, descricao: 'Laptop de alta performance', imagem: 'src/img/Laptop de alta performance - Branco.png' },
+                { id: 2, nome: 'Mouse AMVE', preco: 50.00, descricao: 'Mouse sem fio confortável', imagem: 'src/img/Mouse sem fio confortável - Preto e Cinza.png' },
+                { id: 3, nome: 'Teclado AMVE', preco: 150.00, descricao: 'Teclado mecânico RGB', imagem: 'src/img/Teclado mecânico RGB - branco.png' },
+                { id: 4, nome: 'Monitor AMVE', preco: 800.00, descricao: 'Monitor 27 polegadas Full HD', imagem: 'src/img/Monitor - Branco.png' },
+                { id: 5, nome: 'Fone de ouvido AMVE', preco: 300.00, descricao: 'Fone de Ouvido gamer com som surround', imagem: 'src/img/fone de ouvido - branco.png' },
+                { id: 6, nome: 'Webcam AMVE', preco: 200.00, descricao: 'Webcam Full HD com microfone', imagem: 'src/img/Web cam - preto.png' }
+            ];
+            function carregarProdutos() {
+                const grid = document.getElementById('produtos-grid');
+                grid.innerHTML = '';
+                
+                produtos.forEach(produto => {
+                    const div = document.createElement('div');
+                    div.className = 'produto-card';
+                    div.innerHTML = `
+                        <img src="${produto.imagem || 'img/amveTech.png'}" alt="${produto.nome}" class="produto-img">
+                        <h3>${produto.nome}</h3>
+                        <p>${produto.descricao}</p>
+                        <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
+                        <button onclick="adicionarAoCarrinho(${produto.id})">Adicionar ao Carrinho</button>
+                    `;
+                    grid.appendChild(div);
+                });
+            }
+            function adicionarAoCarrinho(produtoId) {
+                const produto = produtos.find(p => p.id === produtoId);
+                if (!produto) return;
+
+                let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                
+                const itemExistente = carrinho.find(item => item.id === produtoId);
+                if (itemExistente) {
+                    itemExistente.quantidade++;
+                } else {
+                    carrinho.push({
+                        id: produto.id,
+                        nome: produto.nome,
+                        preco: produto.preco,
+                        quantidade: 1
+                    });
+                }
+
+                localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                atualizarContadorCarrinho();
+                alert(`${produto.nome} adicionado ao carrinho!`);
+            }
+            function atualizarContadorCarrinho() {
+                const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+                document.getElementById('cart-count').textContent = total;
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                carregarProdutos();
+                atualizarContadorCarrinho();
+
+                // Listener do formulário de cadastro
+                const form = document.getElementById('cadastro-form');
+                if (form) {
+                    form.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        const data = {
+                            nome: document.getElementById('nome').value || '',
+                            telefone: document.getElementById('telefone').value || '',
+                            email: document.getElementById('email').value || '',
+                            cep: document.getElementById('cep').value || '',
+                            rua: document.getElementById('form-rua').value || '',
+                            numero: document.getElementById('numero').value || '',
+                            complemento: document.getElementById('complemento').value || '',
+                            bairro: document.getElementById('form-bairro').value || '',
+                            cidade: document.getElementById('form-cidade').value || '',
+                            estado: document.getElementById('form-estado').value || ''
+                        };
+                        localStorage.setItem('cadastro', JSON.stringify(data));
+                        window.location.href = 'carrinho.html';
+                    });
+                }
+            });
+            
+        </script>
+        
+    </body>
+
+</html>
