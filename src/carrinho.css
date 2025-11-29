@@ -1,0 +1,94 @@
+/* Carrinho.css - Estilos Específicos para carrinho.html */
+
+/* --- Tabela do Carrinho --- */
+
+#cart-area table {
+    width: 100%;
+    border-collapse: collapse; /* Mudei para collapse para funcionar melhor com a sua estrutura */
+    box-shadow: var(--sombra-moderna);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+#cart-area th, #cart-area td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda-card);
+}
+
+#cart-area th {
+    background-color: var(--cor-fundo-secundario); /* Fundo cinza escuro */
+    color: var(--cor-texto-claro);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#cart-area tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Cinza claro suave para linhas alternadas */
+}
+
+#cart-area td {
+    background-color: var(--cor-texto-claro);
+    vertical-align: middle;
+}
+
+/* Botões de quantidade na tabela */
+#cart-area .inc, #cart-area .dec, #cart-area .remove {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    margin: 0 2px;
+    /* Sobrescreve o estilo geral do botão para ser menor */
+    display: inline-block;
+    width: auto;
+}
+
+#cart-area .inc { background-color: #28a745; /* Verde */ }
+#cart-area .dec { background-color: #ffc107; /* Amarelo */ }
+#cart-area .remove { background-color: #dc3545; /* Vermelho */ }
+
+/* --- Total do Carrinho --- */
+
+#cart-total {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cor-texto-escuro);
+    text-align: right;
+    padding: 10px 15px;
+    background-color: #e9ecef; 
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* --- Botões de Ação do Carrinho --- */
+#comprar {
+    background-color: #28a745; /* Verde para ação principal */
+    width: auto;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#voltar {
+    background-color: var(--cor-secundaria); /* Cinza para ação secundária */
+    width: auto;
+    display: inline-block;
+}
+
+/* --- Dados do Cliente --- */
+
+#dados {
+    margin-top: 15px;
+    padding: 20px;
+    background-color: var(--cor-texto-claro);
+    border: 1px solid var(--cor-borda-card);
+    border-radius: 8px;
+}
+
+#limpar-dados {
+    background-color: var(--cor-secundaria);
+    margin-top: 10px;
+    width: auto;
+    display: inline-block;
+}

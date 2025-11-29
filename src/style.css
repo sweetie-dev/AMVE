@@ -1,0 +1,187 @@
+/* style.css - Estilos Corrigidos e Otimizados */
+
+/* --- Variáveis de Cores --- */
+:root {
+    --cor-primaria: #0d95b8; /* Azul vibrante */
+    --cor-secundaria: #6c757d; /* Cinza para texto secundário */
+    --cor-fundo-principal: #f8f9fa; /* Fundo claro (branco/cinza muito claro) */
+    --cor-fundo-secundario: #343a40; /* Preto/Cinza Escuro para cabeçalho */
+    --cor-texto-claro: #ffffff; 
+    --cor-texto-escuro: #212529; 
+    --cor-borda-card: #dee2e6; 
+    --sombra-moderna: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* --- Estilos Globais e Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--cor-texto-escuro);
+    background-color: var(--cor-fundo-principal);
+
+    background-image: url('img/IVO.jpg'); /* Caminho para a sua imagem de fundo */
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #e0e6ed; /* Cor de fundo para fallback */
+
+}
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h3 {
+    color: var(--cor-texto-escuro);
+    margin-bottom: 1rem;
+}
+
+/* --- Cabeçalho e Navegação (Logo e Menu) --- */
+
+header {
+    background-color: var(--cor-fundo-secundario);
+    color: var(--cor-texto-claro);
+    padding: 25px 30px;
+    box-shadow: var(--sombra-moderna);
+    
+    /* **RESOLUÇÃO AQUI:** */
+    display: flex; /* Alinha filhos (Logo e Nav) LADO A LADO */
+    align-items: center; /* Alinha verticalmente */
+}
+
+header img {
+    height: 80px; /* **CORRIGIDO:** Tamanho menor e adequado para a logo */
+    width: auto;
+    /* Removido o margin-bottom: 10px; que não é mais necessário com o display: flex */
+}
+
+
+nav {
+    margin: 0 auto;
+    margin-left: 540px;
+}
+
+nav a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 8px;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    font-size: 26px;
+}
+
+nav a:hover {
+    background-color: var(--cor-primaria);
+}
+
+#cart-count {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* --- Botões Gerais --- */
+button, input[type="submit"], #enviar {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: bold;
+    margin: 5px 0;
+    /* Estilos padrões que serão sobrescritos se necessário */
+    display: inline-block; 
+    width: auto;
+}
+
+button:hover, input[type="submit"]:hover, #enviar:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
+}
+
+/* --- Seção de Produtos (index.html) --- */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.produto-card {
+    background-color: var(--cor-texto-claro);
+    border: 1px solid var(--cor-borda-card);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: var(--sombra-moderna);
+    transition: transform 0.3s ease;
+    display: flex; /* Para centralizar conteúdo verticalmente */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.produto-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* --- Estilos do Formulário (cadastro.html) --- */
+
+form {
+    background-color: var(--cor-texto-claro);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--sombra-moderna);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+fieldset {
+    border: 1px solid var(--cor-borda-card);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block; 
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--cor-borda-card);
+    border-radius: 5px;
+}
+
+#enviar {
+    width: 100%; /* Botão do formulário ocupa a largura total */
+    margin-top: 20px;
+}
+
