@@ -47,16 +47,5 @@
 
     <div id="erro" style="color:red; display:none;"></div>
     <script src="cep.js"></script>
-    <script>
-        function atualizarContadorCarrinho() {
-            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            const total = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-            const cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCountElement.textContent = total;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
-    </script>
 </body>
 </html>
