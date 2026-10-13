@@ -72,6 +72,7 @@ AMVE/
 │   └── ecommerce.sql        # Esquema do banco (clientes, compras, produtos)
 ├── php/                     # Back-end PHP (acesso a dados, regras e HTML no mesmo arquivo)
 │   ├── db.php               # Conexão PDO
+│   ├── index.php            # Teste de conexão com o banco
 │   ├── produtos.php         # Listagem e adição ao carrinho (sessão)
 │   ├── cart.php             # Carrinho
 │   ├── checkout.php         # Resumo da compra
@@ -87,4 +88,4 @@ AMVE/
     └── img/                 # Imagens dos produtos
 ```
 
-**Resumo:** o front-end (`src/`) mantém catálogo, carrinho e cadastro no navegador (localStorage), enquanto o back-end (`php/`) possui um fluxo próprio com sessão PHP e MySQL. A análise detalhada (coesão, acoplamento, proposta de evolução em camadas, decisão arquitetural e trade-offs) está no relatório entregue na atividade.
+**Resumo:** o front-end (`src/`) mantém catálogo, carrinho e cadastro no navegador (localStorage), enquanto o back-end (`php/`) possui um fluxo próprio com sessão PHP e MySQL. A análise detalhada (coesão, acoplamento, proposta de evolução em camadas, decisão arquitetural e trade-offs) está no relatório entregue na atividade (*Revisão Arquitetural do Sistema AMVE*).
